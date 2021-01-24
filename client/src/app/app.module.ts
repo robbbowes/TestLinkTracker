@@ -14,6 +14,8 @@ import { AddTestModalComponent } from './components/actions-list/actions/add-tes
 import { AddTestsModalComponent } from './components/actions-list/actions/add-tests-modal/add-tests-modal.component';
 import { AddUserModalComponent } from './components/actions-list/actions/add-user-modal/add-user-modal.component';
 import { TestsListComponent } from './components/tests/tests-list/tests-list.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NameShortenPipe } from './_pipes/name-shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { TestsListComponent } from './components/tests/tests-list/tests-list.com
     AddTestModalComponent,
     AddTestsModalComponent,
     AddUserModalComponent,
-    TestsListComponent
+    TestsListComponent,
+    DashboardComponent,
+    NameShortenPipe
   ],
   imports: [
     BrowserModule,

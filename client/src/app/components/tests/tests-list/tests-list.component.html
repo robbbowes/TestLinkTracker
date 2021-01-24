@@ -1,42 +1,7 @@
-<!-- <section id="tests">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="card">
-          <div class="card-header">
-            <h4>Tests</h4>
-          </div>
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th>Name</th>
-                <th>#</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let test of tests">
-                <td>{{ test.name }}</td>
-                <td>{{ test.testLinkTest }}</td>
-                <td>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fa fa-angle-down"></i> Details
-                    </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-md-3"></div>
-    </div>
-  </div>
-</section> -->
-
 <section id="tests">
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col-md-12">
         <div class="card">
           <div class="card-header">
             <h4>Tests</h4>
@@ -56,7 +21,7 @@
                 <td>{{ test.testLinkTest }}</td>
                 <td><i class="fa fa-chain-broken text-danger"></i></td>
                 <td>
-                  <a href="/details/{{ test.id }}" class="btn btn-secondary">
+                  <a href="/tests/{{ test.id }}" class="btn btn-secondary">
                     <i class="fa fa-angle-double-right"></i> Details
                   </a>
                 </td>
@@ -64,7 +29,7 @@
             </tbody>
           </table>
 
-          <!-- PAGINATION -->
+          <!-- FILTERING -->
           <div *ngIf="tests" class="btn-group fixed-bottom ml-4 mb-4">
             <button
               class="btn {{ broken }} px-4"
