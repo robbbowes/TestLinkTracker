@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Test } from './_models/Test';
-import { TestsService } from './_services/tests.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +7,8 @@ import { TestsService } from './_services/tests.service';
 })
 export class AppComponent implements OnInit {
   title = 'TestLinkTracker';
-  tests: Test[];
 
-  constructor(private testService: TestsService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.testService.getTests().subscribe(tests => {
-      this.tests = tests;
-    });
-  }
+  ngOnInit() { }
 }

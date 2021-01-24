@@ -13,6 +13,7 @@ import { ActionsListComponent } from './components/actions-list/actions-list.com
 import { AddTestModalComponent } from './components/actions-list/actions/add-test-modal/add-test-modal.component';
 import { AddTestsModalComponent } from './components/actions-list/actions/add-tests-modal/add-tests-modal.component';
 import { AddUserModalComponent } from './components/actions-list/actions/add-user-modal/add-user-modal.component';
+import { TestsListComponent } from './components/tests/tests-list/tests-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddUserModalComponent } from './components/actions-list/actions/add-use
     ActionsListComponent,
     AddTestModalComponent,
     AddTestsModalComponent,
-    AddUserModalComponent
+    AddUserModalComponent,
+    TestsListComponent
   ],
   imports: [
     BrowserModule,

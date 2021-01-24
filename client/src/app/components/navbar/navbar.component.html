@@ -1,75 +1,81 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-1">
-  <div class="container">
-    <a routerLink="/" class="navbar-brand">Selenium Tracker</a>
-    <button
-      class="navbar-toggler"
-      data-toggle="collapse"
-      data-target="#navbarCollapse"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav">
-        <li class="nav-item px-2">
-          <a routerLink="/" routerLinkActive="active" class="nav-link"
-            >Dashboard</a
-          >
-        </li>
-        <li class="nav-item px-2">
-          <a routerLink="/tests" routerLinkActive="active" class="nav-link"
-            >Tests</a
-          >
-        </li>
-        <li class="nav-item px-2">
-          <a routerLink="/tags" routerLinkActive="active" class="nav-link"
-            >Tags</a
-          >
-        </li>
-        <li class="nav-item px-2">
-          <a routerLink="/users" routerLinkActive="active" class="nav-link"
-            >Users</a
-          >
-        </li>
-      </ul>
+<div class="fixed-top">
+  <nav
+    class="navbar navbar-default navbar-expand-sm navbar navbar-dark bg-dark p-1"
+  >
+    <div class="container">
+      <a routerLink="/" routerLinkActive="active" class="navbar-brand"
+        >Selenium Tracker</a
+      >
 
-      <ul class="navbar-nav ml-auto pointer">
-        <li class="nav-item dropdown mr-3" dropdown>
-          <a class="nav-link dropdown-toggle" dropdownToggle>
-            <i class="fa fa-user" aria-hidden="true"></i> Welcome User
-          </a>
-          <div class="dropdown-menu bg-dark mt-0" *dropdownMenu>
-            <a
-              routerLink="/profile"
-              class="dropdown-item bg-dark text-white pointer"
-            >
-              <i class="fa fa-user-circle" aria-hidden="true"></i> Profile
-            </a>
-            <a
-              routerLink="/settings"
-              class="dropdown-item bg-dark text-white pointer"
-            >
-              <i class="fa fa-cog" aria-hidden="true"></i> Settings
-            </a>
-            <a
-              routerLink="/logout"
-              class="dropdown-item bg-dark text-white pointer"
-            >
-              <i class="fa fa-user-times" aria-hidden="true"></i> Logout
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="dropdownMenuButton"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<!-- HEADER -->
-<header id="main-header" class="py-2 bg-primary text-white">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h1><i class="fa fa-cog"></i> Dashboard</h1>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a routerLink="/tests" routerLinkActive="active" class="nav-link"
+              >Tests</a
+            >
+          </li>
+          <li class="nav-item px-2">
+            <a routerLink="/tags" routerLinkActive="active" class="nav-link"
+              >Tags</a
+            >
+          </li>
+          <li class="nav-item px-2">
+            <a routerLink="/users" routerLinkActive="active" class="nav-link"
+              >Users</a
+            >
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto pointer">
+          <li class="nav-item dropdown mr-3" dropdown>
+            <a class="nav-link dropdown-toggle" dropdownToggle>
+              <i class="fa fa-user" aria-hidden="true"></i> Welcome User
+            </a>
+            <div class="dropdown-menu bg-dark mt-0" *dropdownMenu>
+              <a
+                routerLink="/profile"
+                class="dropdown-item bg-dark text-white pointer"
+              >
+                <i class="fa fa-user-circle" aria-hidden="true"></i> Profile
+              </a>
+              <a
+                routerLink="/settings"
+                class="dropdown-item bg-dark text-white pointer"
+              >
+                <i class="fa fa-cog" aria-hidden="true"></i> Settings
+              </a>
+              <a
+                routerLink="/logout"
+                class="dropdown-item bg-dark text-white pointer"
+              >
+                <i class="fa fa-user-times" aria-hidden="true"></i> Logout
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-</header>
+  </nav>
+
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fa fa-cog"></i> Dashboard</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
