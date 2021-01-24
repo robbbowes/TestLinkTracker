@@ -1,0 +1,67 @@
+<a href="#" class="btn btn-primary btn-block" (click)="openModal(addTest)">
+  <i class="fa fa-plus"></i> Add Test
+</a>
+
+<ng-template #addTest>
+    <div class="modal fade" id="addTestModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Add Post</h5>
+            <button class="class" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="title">Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select name="role" id="roleSelect" class="form-control">
+                        <option value="admin">Admin</option>
+                        <option value="learner">Learner</option>
+                        <option value="manager">Manager</option>
+                        <option value="tutoring">Tutoring</option>
+                    </select>
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+           <span aria-hidden="true">×</span>
+        </button>
+     </div>
+     <div class="modal-body">
+        This is a sample modal dialog box.
+     </div>
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+     </div>
+  </ng-template>
+
+<!-- <button type="button" class="btn btn-primary" (click)="openModal(addTest)">
+  Open modal
+</button> -->
+
+<!-- <ng-template #addTest>
+   <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+         <span aria-hidden="true">×</span>
+      </button>
+   </div>
+   <div class="modal-body">
+      This is a sample modal dialog box.
+   </div>
+   <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+   </div>
+</ng-template> -->
