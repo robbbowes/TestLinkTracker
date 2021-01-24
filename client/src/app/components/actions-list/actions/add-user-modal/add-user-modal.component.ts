@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -23,7 +24,8 @@ export class AddUserModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit() {
+  onSubmit(form: NgForm) {
+    console.log(form)
     this.modalRef.hide();
   }
 

@@ -9,7 +9,11 @@ namespace API.Helpers
         public AutoMapperProfile()
         {
             CreateMap<Test, GetTestDto>();
+            CreateMap<AddTestDto, Test>();
+
             CreateMap<Tag, GetTagDto>();
+            CreateMap<AddTagDto, Tag>();
+
         }
     }
 }

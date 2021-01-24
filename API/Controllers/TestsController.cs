@@ -29,5 +29,11 @@ namespace API.Controllers
             return Ok(await _testRepo.GetTestAsync(name));
         }
 
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<GetTestDto>>> AddTest(AddTestDto addTestDto)
+        {
+            return Ok(await _testRepo.AddTestAsync(addTestDto));
+        }
+
     }
 }

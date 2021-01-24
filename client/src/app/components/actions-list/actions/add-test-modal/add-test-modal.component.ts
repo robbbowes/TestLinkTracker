@@ -1,5 +1,9 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AddTest } from 'src/app/_models/AddTest';
+import { Test } from 'src/app/_models/Test';
+import { TestsService } from 'src/app/_services/tests.service';
 
 @Component({
   selector: 'app-add-test-modal',
@@ -8,12 +12,17 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class AddTestModalComponent implements OnInit {
   modalRef: BsModalRef;
+  newTest: AddTest = {
+    name: "",
+    testLinkTest: "",
+    tags: []
+  };
   config = {
     class: "modal-lg",
     ignoreBackdropClick: true,
   }
 
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService, private testService: TestsService) {
     modalService.config.class
   }
 
@@ -21,7 +30,11 @@ export class AddTestModalComponent implements OnInit {
     this.modalRef = this.modalService.show(template, this.config);
   }
 
-  submit() {
+  onSubmit(form: NgForm) {
+    this.newTest.name = form.value.name;
+    this.newTest.testLinkTest = form.value.testLink;
+    console.log(this.newTest)
+    this.testService.addTest(this.newTest);
     this.modalRef.hide();
   }
 

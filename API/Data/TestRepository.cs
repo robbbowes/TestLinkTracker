@@ -19,6 +19,18 @@ namespace API.Data
             _context = context;
         }
 
+        public async Task<IEnumerable<GetTestDto>> AddTestAsync(AddTestDto addTestDto)
+        {
+            Test test = _mapper.Map<Test>(addTestDto);
+            await _context.AddAsync(test);
+            await _context.SaveChangesAsync();
+
+            List<Test> tests = await _context.Tests
+                .Include(t => t.Tags)
+                .ToListAsync();
+            return tests.Select(t => _mapper.Map<GetTestDto>(t)).ToList();
+        }
+
         public async Task<GetTestDto> GetTestAsync(string name)
         {
             Test test = await _context.Tests

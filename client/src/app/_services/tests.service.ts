@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Test } from '../_models/Test';
 
 import { map } from 'rxjs/operators'
+import { AddTest } from '../_models/AddTest';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,8 @@ export class TestsService {
     return this.http.get<Test>(this.baseUrl + 'tests/' + name);
   }
 
-  
+  addTest(newTest: AddTest) {
+    return this.http.post<Test[]>(this.baseUrl + 'tests', newTest);
+  }
+
 }

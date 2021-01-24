@@ -15,11 +15,17 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form #addTestForm="ngForm" (ngSubmit)="onSubmit(addTestForm)">
       <div class="form-group row">
-        <label for="title" class="col-sm-3 col-form-label">Name</label>
+        <label for="name" class="col-sm-3 col-form-label">Name *</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" />
+          <input
+            type="text"
+            class="form-control"
+            required
+            ngModel
+            name="name"
+          />
         </div>
       </div>
       <div class="form-group row">
@@ -27,13 +33,19 @@
           >TestLink Case</label
         >
         <div class="col-sm-9">
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" ngModel name="testLink" />
         </div>
       </div>
       <div class="form-group row">
         <label for="role" class="col-sm-3 col-form-label">Role</label>
         <div class="col-sm-9">
-          <select name="role" id="roleSelect" class="form-control">
+          <select
+            name="role"
+            id="roleSelect"
+            class="form-control"
+            ngModel
+            name="role"
+          >
             <option value="admin">Admin</option>
             <option value="learner">Learner</option>
             <option value="manager">Manager</option>
@@ -44,7 +56,13 @@
       <div class="form-group row">
         <label for="area" class="col-sm-3 col-form-label">Area</label>
         <div class="col-sm-9">
-          <select name="area" id="areaSelect" class="form-control">
+          <select
+            name="area"
+            id="areaSelect"
+            class="form-control"
+            ngModel
+            name="area"
+          >
             <option value="admin">Admin</option>
             <option value="learner">Learner</option>
             <option value="manager">Manager</option>
@@ -55,7 +73,13 @@
       <div class="form-group row">
         <label for="scope" class="col-sm-3 col-form-label">Scope</label>
         <div class="col-sm-9">
-          <select name="scope" id="scopeSelect" class="form-control">
+          <select
+            name="scope"
+            id="scopeSelect"
+            class="form-control"
+            ngModel
+            name="scope"
+          >
             <option value="admin">Admin</option>
             <option value="learner">Learner</option>
             <option value="manager">Manager</option>
@@ -66,7 +90,13 @@
       <div class="form-group row">
         <label for="topic" class="col-sm-3 col-form-label">Topic</label>
         <div class="col-sm-9">
-          <select name="topic" id="topicSelect" class="form-control">
+          <select
+            name="topic"
+            id="topicSelect"
+            class="form-control"
+            ngModel
+            name="topic"
+          >
             <option value="admin">Admin</option>
             <option value="learner">Learner</option>
             <option value="manager">Manager</option>
@@ -77,7 +107,13 @@
       <div class="form-group row">
         <label for="object" class="col-sm-3 col-form-label">Object</label>
         <div class="col-sm-9">
-          <select name="object" id="objectSelect" class="form-control">
+          <select
+            name="object"
+            id="objectSelect"
+            class="form-control"
+            ngModel
+            name="object"
+          >
             <option value="admin">Admin</option>
             <option value="learner">Learner</option>
             <option value="manager">Manager</option>
@@ -86,15 +122,28 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="observations" class="col-sm-3 col-form-label">Observations</label
+        <label for="observations" class="col-sm-3 col-form-label"
+          >Observations</label
         >
         <div class="col-sm-9">
-          <textarea name="editor1" class="form-control"></textarea>
+          <textarea
+            name="editor1"
+            class="form-control"
+            ngModel
+            name="observations"
+          ></textarea>
         </div>
       </div>
+      <div class="modal-footer">
+        <button
+          [disabled]="!addTestForm.valid"
+          [ngClass]="{ 'disabled-btn': !addTestForm.valid }"
+          class="btn btn-primary"
+          type="submit"
+        >
+          Add Test
+        </button>
+      </div>
     </form>
-  </div>
-  <div class="modal-footer">
-      <button class="btn btn-primary" (click)="submit()">Add Test</button>
   </div>
 </ng-template>

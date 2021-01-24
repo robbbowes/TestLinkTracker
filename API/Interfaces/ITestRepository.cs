@@ -8,5 +8,6 @@ namespace API.Interfaces
     {
         public Task<IEnumerable<GetTestDto>> GetTestsAsync();
         public Task<GetTestDto> GetTestAsync(string name);
+        public Task<IEnumerable<GetTestDto>> AddTestAsync(AddTestDto addTestDto);
     }
 }

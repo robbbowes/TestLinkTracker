@@ -12,16 +12,4 @@ export class ActionsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openAddTestModal() {
-    console.log("Test clicked!")
-  }
-
-  openAddTestsModal() {
-    console.log("Tests clicked!")
-  }
-
-  openAddUserModal() {
-    console.log("User clicked!")
-  }
-
 }

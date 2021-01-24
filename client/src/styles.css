@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+.disabled-btn {
+  cursor: not-allowed;
+}
+
 @media only screen and (max-width: 575px) {
   body {
     padding-top: 120px;
