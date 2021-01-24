@@ -3,65 +3,98 @@
 </a>
 
 <ng-template #addTest>
-    <div class="modal fade" id="addTestModal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title">Add Post</h5>
-            <button class="class" data-dismiss="modal">
-              <span>&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-                <div class="form-group">
-                    <label for="title">Name</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="role">Role</label>
-                    <select name="role" id="roleSelect" class="form-control">
-                        <option value="admin">Admin</option>
-                        <option value="learner">Learner</option>
-                        <option value="manager">Manager</option>
-                        <option value="tutoring">Tutoring</option>
-                    </select>
-                </div>
-
-            </form>
-          </div>
+  <div class="modal-header bg-primary text-white">
+    <h5 class="modal-title">Add Test</h5>
+    <button
+      type="button"
+      class="close pull-right text-white"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" />
         </div>
       </div>
-    </div>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">Modal</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-           <span aria-hidden="true">×</span>
-        </button>
-     </div>
-     <div class="modal-body">
-        This is a sample modal dialog box.
-     </div>
-     <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-     </div>
-  </ng-template>
-
-<!-- <button type="button" class="btn btn-primary" (click)="openModal(addTest)">
-  Open modal
-</button> -->
-
-<!-- <ng-template #addTest>
-   <div class="modal-header">
-      <h4 class="modal-title pull-left">Modal</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-         <span aria-hidden="true">×</span>
-      </button>
-   </div>
-   <div class="modal-body">
-      This is a sample modal dialog box.
-   </div>
-   <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-   </div>
-</ng-template> -->
+      <div class="form-group row">
+        <label for="test-link" class="col-sm-2 col-form-label"
+          >TestLink Case</label
+        >
+        <div class="col-sm-10">
+          <input type="text" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="role" class="col-sm-2 col-form-label">Role</label>
+        <div class="col-sm-10">
+          <select name="role" id="roleSelect" class="form-control">
+            <option value="admin">Admin</option>
+            <option value="learner">Learner</option>
+            <option value="manager">Manager</option>
+            <option value="tutoring">Tutoring</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="area" class="col-sm-2 col-form-label">Area</label>
+        <div class="col-sm-10">
+          <select name="area" id="areaSelect" class="form-control">
+            <option value="admin">Admin</option>
+            <option value="learner">Learner</option>
+            <option value="manager">Manager</option>
+            <option value="tutoring">Tutoring</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="scope" class="col-sm-2 col-form-label">Scope</label>
+        <div class="col-sm-10">
+          <select name="scope" id="scopeSelect" class="form-control">
+            <option value="admin">Admin</option>
+            <option value="learner">Learner</option>
+            <option value="manager">Manager</option>
+            <option value="tutoring">Tutoring</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="topic" class="col-sm-2 col-form-label">Topic</label>
+        <div class="col-sm-10">
+          <select name="topic" id="topicSelect" class="form-control">
+            <option value="admin">Admin</option>
+            <option value="learner">Learner</option>
+            <option value="manager">Manager</option>
+            <option value="tutoring">Tutoring</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="object" class="col-sm-2 col-form-label">Object</label>
+        <div class="col-sm-10">
+          <select name="object" id="objectSelect" class="form-control">
+            <option value="admin">Admin</option>
+            <option value="learner">Learner</option>
+            <option value="manager">Manager</option>
+            <option value="tutoring">Tutoring</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="observations" class="col-sm-2 col-form-label">Observations</label
+        >
+        <div class="col-sm-10">
+          <textarea name="editor1" class="form-control"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" (click)="submit()">Add Test</button>
+  </div>
+</ng-template>

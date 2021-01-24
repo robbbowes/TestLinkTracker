@@ -11,13 +11,17 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ActionsListComponent } from './components/actions-list/actions-list.component';
 import { AddTestModalComponent } from './components/actions-list/actions/add-test-modal/add-test-modal.component';
+import { AddTestsModalComponent } from './components/actions-list/actions/add-tests-modal/add-tests-modal.component';
+import { AddUserModalComponent } from './components/actions-list/actions/add-user-modal/add-user-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ActionsListComponent,
-    AddTestModalComponent
+    AddTestModalComponent,
+    AddTestsModalComponent,
+    AddUserModalComponent
   ],
   imports: [
     BrowserModule,

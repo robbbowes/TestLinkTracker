@@ -2,15 +2,14 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-add-test-modal',
-  templateUrl: './add-test-modal.component.html',
-  styleUrls: ['./add-test-modal.component.css']
+  selector: 'app-add-tests-modal',
+  templateUrl: './add-tests-modal.component.html',
+  styleUrls: ['./add-tests-modal.component.css']
 })
-export class AddTestModalComponent implements OnInit {
+export class AddTestsModalComponent implements OnInit {
   modalRef: BsModalRef;
   config = {
-    class: "modal-lg",
-    ignoreBackdropClick: true,
+    class: "modal-lg"
   }
 
   constructor(private modalService: BsModalService) {
@@ -21,11 +20,11 @@ export class AddTestModalComponent implements OnInit {
     this.modalRef = this.modalService.show(template, this.config);
   }
 
-  submit() {
-    this.modalRef.hide();
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
+  submit() {
+    this.modalRef.hide();
   }
 
 }
