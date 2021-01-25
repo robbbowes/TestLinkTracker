@@ -23,10 +23,10 @@ namespace API.Controllers
             return Ok(await _testRepo.GetTestsAsync());
         }
 
-        [HttpGet("{name}")]
-        public async Task<ActionResult<IEnumerable<GetTestDto>>> GetTest(string name)
+        [HttpGet("{testId}")]
+        public async Task<ActionResult<IEnumerable<GetTestDto>>> GetTest(int testId)
         {
-            return Ok(await _testRepo.GetTestAsync(name));
+            return Ok(await _testRepo.GetTestAsync(testId));
         }
 
         [HttpPost]
@@ -34,6 +34,5 @@ namespace API.Controllers
         {
             return Ok(await _testRepo.AddTestAsync(addTestDto));
         }
-
     }
 }

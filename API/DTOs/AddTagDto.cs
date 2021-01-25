@@ -7,5 +7,6 @@ namespace API.DTOs
         public string Topic { get; set; }
         public string Scope { get; set; }
         public string Object { get; set; }
+        public int TestId { get; set; } 
     }
 }

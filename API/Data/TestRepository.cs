@@ -25,17 +25,16 @@ namespace API.Data
             await _context.AddAsync(test);
             await _context.SaveChangesAsync();
 
-            List<Test> tests = await _context.Tests
-                .Include(t => t.Tags)
-                .ToListAsync();
+            List<Test> tests = await _context.Tests.ToListAsync();
             return tests.Select(t => _mapper.Map<GetTestDto>(t)).ToList();
         }
 
-        public async Task<GetTestDto> GetTestAsync(string name)
+        public async Task<GetTestDto> GetTestAsync(int testId)
         {
             Test test = await _context.Tests
-                .Where(t => t.Name == name)
+                .Where(t => t.Id == testId)
                 .Include(t => t.Tags)
+                .Include(t => t.Breakage)
                 .SingleOrDefaultAsync();
 
             return _mapper.Map<GetTestDto>(test);
@@ -45,6 +44,7 @@ namespace API.Data
         {
             List<Test> tests = await _context.Tests
                 .Include(t => t.Tags)
+                .Include(t => t.Breakage)
                 .ToListAsync();
             return tests.Select(t => _mapper.Map<GetTestDto>(t)).ToList();
         }

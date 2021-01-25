@@ -14,6 +14,8 @@ namespace API.Helpers
             CreateMap<Tag, GetTagDto>();
             CreateMap<AddTagDto, Tag>();
 
+            CreateMap<Breakage, GetBreakageDto>();
+            CreateMap<AddBreakageDto, Breakage>();
         }
     }
 }

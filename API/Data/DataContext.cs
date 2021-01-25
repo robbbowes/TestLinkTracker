@@ -9,5 +9,6 @@ namespace API.Data
 
         public DbSet<Test> Tests { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Breakage> Breakages { get; set; }
     }
 }
