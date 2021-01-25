@@ -1,8 +1,7 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AddTest } from 'src/app/_models/AddTest';
-import { Test } from 'src/app/_models/Test';
 import { TestsService } from 'src/app/_services/tests.service';
 
 @Component({
@@ -33,8 +32,11 @@ export class AddTestModalComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.newTest.name = form.value.name;
     this.newTest.testLinkTest = form.value.testLink;
-    console.log(this.newTest)
-    this.testService.addTest(this.newTest);
+    this.testService.addTest(this.newTest).subscribe(response => {
+      console.log(response)
+    }, error => {
+      console.log(error)
+    });
     this.modalRef.hide();
   }
 

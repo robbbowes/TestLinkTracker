@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Test } from 'src/app/_models/Test';
+import { GetTest } from 'src/app/_models/GetTest';
 import { TestsService } from 'src/app/_services/tests.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { TestsService } from 'src/app/_services/tests.service';
   styleUrls: ['./tests-list.component.css']
 })
 export class TestsListComponent implements OnInit {
-  tests: Test[];
+  tests: GetTest[];
   broken: string = "";
   brokenString = "Broken"
   assigned: string = "";

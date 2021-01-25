@@ -24,7 +24,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{testId}")]
-        public async Task<ActionResult<IEnumerable<GetTestDto>>> GetTest(int testId)
+        public async Task<ActionResult<GetTestDto>> GetTest(int testId)
         {
             return Ok(await _testRepo.GetTestAsync(testId));
         }

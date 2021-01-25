@@ -16,6 +16,7 @@ namespace API.Helpers
 
             CreateMap<Breakage, GetBreakageDto>();
             CreateMap<AddBreakageDto, Breakage>();
+            CreateMap<EditBreakageDto, Breakage>();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<ITestRepository, TestRepository>();
+            services.AddScoped<IBreakageRepository, BreakageRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
                         services.AddDbContext<DataContext>(options => 
             {

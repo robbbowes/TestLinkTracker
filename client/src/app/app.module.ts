@@ -16,6 +16,7 @@ import { AddUserModalComponent } from './components/actions-list/actions/add-use
 import { TestsListComponent } from './components/tests/tests-list/tests-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NameShortenPipe } from './_pipes/name-shorten.pipe';
+import { TestDetailComponent } from './components/tests/test-detail/test-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NameShortenPipe } from './_pipes/name-shorten.pipe';
     AddUserModalComponent,
     TestsListComponent,
     DashboardComponent,
-    NameShortenPipe
+    NameShortenPipe,
+    TestDetailComponent
   ],
   imports: [
     BrowserModule,

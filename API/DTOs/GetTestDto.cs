@@ -9,6 +9,5 @@ namespace API.DTOs
         public List<GetTagDto> Tags { get; set; }
         public string TestLinkTest { get; set; }
         public GetBreakageDto Breakage { get; set; }
-        public bool IsBroken { get; set; }
     }
 }

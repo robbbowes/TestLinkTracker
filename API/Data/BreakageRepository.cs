@@ -21,7 +21,10 @@ namespace API.Data
         public async Task<GetBreakageDto> GetBreakageAsync(int id)
         {
             GetBreakageDto breakageDto = null;
-            Breakage breakage = await _context.Breakages.Where(b => b.Id == id).SingleOrDefaultAsync();
+            Breakage breakage = await _context.Breakages
+                .Where(b => b.Id == id)
+                .FirstOrDefaultAsync();
+
             if (breakage != null)
             {
                 breakageDto = _mapper.Map<GetBreakageDto>(breakage);

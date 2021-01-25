@@ -1,4 +1,4 @@
-export interface Tag {
+export interface GetTag {
     role: string;
     area: string;
     topic: string;

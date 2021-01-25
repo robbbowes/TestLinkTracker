@@ -19,7 +19,10 @@
               <tr *ngFor="let test of tests">
                 <td>{{ test.name }}</td>
                 <td>{{ test.testLinkTest }}</td>
-                <td><i class="fa fa-chain-broken text-danger"></i></td>
+                <td *ngIf="test.breakage !== null; else blank">
+                  <i class="fa fa-chain-broken text-danger"></i>
+                </td>
+                <ng-template #blank><td></td></ng-template>
                 <td>
                   <a href="/tests/{{ test.id }}" class="btn btn-secondary">
                     <i class="fa fa-angle-double-right"></i> Details
@@ -43,7 +46,7 @@
               type="button"
               (click)="toggleAssigned()"
             >
-            {{ assignmentString }}
+              {{ assignmentString }}
             </button>
           </div>
         </div>
