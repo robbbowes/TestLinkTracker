@@ -1,0 +1,73 @@
+<a href="#" class="btn btn-danger btn-block" (click)="openModal(addBreakage)">
+  <i class="fa fa-plus"></i> Add Breakage
+</a>
+
+<ng-template #addBreakage>
+  <div class="modal-header bg-danger text-white">
+    <h5 class="modal-title">Add Breakage</h5>
+    <button
+      type="button"
+      class="close pull-right text-white"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+      <label for="Filter" class="col-sm-2 col-form-label">Search</label>
+      <div class="col-sm-10">
+        <input
+          class="search form-control"
+          type="text"
+          [(ngModel)]="searchFilter"
+          (ngModelChange)="filter()"
+        />
+      </div>
+    </div>
+    <form #addbreakageForm="ngForm" (ngSubmit)="onSubmit(addbreakageForm)">
+      <div class="form-group row">
+        <label for="testSelect" class="col-sm-2 col-form-label">Test:</label>
+        <div class="col-sm-10">
+          <select
+            name="testSelect"
+            required
+            id="testSelect"
+            class="form-control"
+            ngModel
+          >
+            <option *ngFor="let test of filteredTests" value="{{ test.id }}">
+              {{ test.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="info" class="col-sm-2 col-form-label">Breakage Info</label>
+        <div class="col-sm-10">
+          <input required type="text" class="form-control" ngModel name="info" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="ticket" class="col-sm-2 col-form-label">Jira Ticket</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ngModel name="ticket" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          [disabled]="!addbreakageForm.valid"
+          [ngClass]="{ 'disabled-btn': !addbreakageForm.valid }"
+          class="btn btn-danger"
+          type="submit"
+        >
+          Add Breakage
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

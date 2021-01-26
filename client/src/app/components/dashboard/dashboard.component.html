@@ -16,7 +16,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let test of noTestLinkTests">
+              <tr *ngFor="let test of tests">
                 <td>{{ test.name | nameShorten: nameLength }}</td>
                 <td>
                   <a href="/" class="btn btn-secondary">
@@ -31,26 +31,34 @@
       <div class="col-lg-3">
         <div class="card text-center bg-primary text-white mb-3">
           <div class="card-body">
-            <h3>Tests</h3>
-            <h4 class="display-4">
+            <h4>Tests</h4>
+            <h5 class="display-5">
               <i class="fa fa-cog"></i> {{ tests.length }}
-            </h4>
+            </h5>
             <a routerLink="/tests" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
 
         <div class="card text-center bg-success text-white mb-3">
           <div class="card-body">
-            <h3>Tags</h3>
-            <h4 class="display-4"><i class="fa fa-tags"></i> 4</h4>
+            <h4>Tagged</h4>
+            <h5 class="display-5"><i class="fa fa-tags"></i> {{ tests.length - noTestLinkTests.length }}</h5>
+            <a routerLink="/tags" class="btn btn-outline-light btn-sm">View</a>
+          </div>
+        </div>
+
+        <div class="card text-center bg-danger text-white mb-3">
+          <div class="card-body">
+            <h4>Broken</h4>
+            <h5 class="display-5"><i class="fa fa-chain-broken"></i> {{ brokenTests.length }}</h5>
             <a routerLink="/tags" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
 
         <div class="card text-center bg-warning text-white mb-3">
           <div class="card-body">
-            <h3>Users</h3>
-            <h4 class="display-4"><i class="fa fa-users"></i> 4</h4>
+            <h4>Users</h4>
+            <h5 class="display-5"><i class="fa fa-users"></i> 4</h5>
             <a routerLink="/users" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>

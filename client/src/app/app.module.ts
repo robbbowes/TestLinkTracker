@@ -17,6 +17,7 @@ import { TestsListComponent } from './components/tests/tests-list/tests-list.com
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NameShortenPipe } from './_pipes/name-shorten.pipe';
 import { TestDetailComponent } from './components/tests/test-detail/test-detail.component';
+import { AddBreakageModalComponent } from './components/actions-list/actions/add-breakage-modal/add-breakage-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TestDetailComponent } from './components/tests/test-detail/test-detail.
     TestsListComponent,
     DashboardComponent,
     NameShortenPipe,
-    TestDetailComponent
+    TestDetailComponent,
+    AddBreakageModalComponent
   ],
   imports: [
     BrowserModule,
