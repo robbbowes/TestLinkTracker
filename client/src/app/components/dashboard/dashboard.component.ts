@@ -22,16 +22,13 @@ export class DashboardComponent implements OnInit {
         if (test.testLinkTest !== "") this.noTestLinkTests.push(test)
         if (test.breakage) this.brokenTests.push(test)
       })
-      console.log("All tests:", this.tests)
-      console.log("Test with missing testlink ids", this.noTestLinkTests)
-      console.log("Broken tests", this.brokenTests)
     })
   }
 
   @HostListener('window:resize')
   onResize() {
     let innerWidth = window.innerWidth;
-    this.nameLength = innerWidth < 768 ? 40 : innerWidth < 1201 ? 60 : 100;
+    this.nameLength = innerWidth < 768 ? 40 : innerWidth < 1201 ? 60 : 85;
   }
 
 }

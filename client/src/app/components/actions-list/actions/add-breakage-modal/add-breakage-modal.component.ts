@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { filter, map } from 'rxjs/operators';
 import { AddBreakage } from 'src/app/_models/AddBreakage';
@@ -24,7 +25,8 @@ export class AddBreakageModalComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private breakageService: BreakagesService,
-    private testService: TestsService) {
+    private testService: TestsService,
+    private router: Router) {
     modalService.config.class
   }
 
@@ -49,11 +51,9 @@ export class AddBreakageModalComponent implements OnInit {
     this.newBreakage.testId = +form.value.testSelect;
     this.newBreakage.info = form.value.info;
     this.newBreakage.ticket = form.value.ticket;
-    this.breakageService.addBreakage(this.newBreakage).subscribe(response => {
-    // console.log(form)
-    console.log(form.value.testSelect)
-    });
+    this.breakageService.addBreakage(this.newBreakage);
     this.modalRef.hide();
+    this.router.navigate(['']);
   }
 
   ngOnInit(): void {

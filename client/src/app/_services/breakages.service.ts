@@ -13,6 +13,6 @@ export class BreakagesService {
   constructor(private http: HttpClient) { }
 
   addBreakage(newBreakage: AddBreakage) {
-    return this.http.post<GetTest>(this.baseUrl + 'breakages', newBreakage);
+    return this.http.post<GetTest>(this.baseUrl + 'breakages', newBreakage).subscribe();
   }
 }

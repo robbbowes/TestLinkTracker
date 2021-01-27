@@ -4,29 +4,58 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-9">
-        <div class="card">
-          <div class="card-header">
-            <h4>Missing TestLink Id</h4>
+        <tabset>
+          <div class="test-tabset">
+
+            <tab heading="Broken" class="bg-danger">
+              <div class="card">
+                <table class="table table-striped">
+                  <thead class="thead">
+                    <tr>
+                      <th>Name</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let test of tests">
+                      <td>{{ test.name | nameShorten: nameLength }}</td>
+                      <td>
+                        <a href="/" class="btn btn-secondary">
+                          <i class="fa fa-angle-double-right"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </tab>
+
+            <tab heading="Missing TestLInk">
+              <div class="card">
+                <table class="table table-striped">
+                  <thead class="thead">
+                    <tr>
+                      <th>Name</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let test of tests">
+                      <td>{{ test.name | nameShorten: nameLength }}</td>
+                      <td>
+                        <a href="/" class="btn btn-secondary">
+                          <i class="fa fa-angle-double-right"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </tab>
+
+
           </div>
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th>Name</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let test of tests">
-                <td>{{ test.name | nameShorten: nameLength }}</td>
-                <td>
-                  <a href="/" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        </tabset>
       </div>
       <div class="col-lg-3">
         <div class="card text-center bg-primary text-white mb-3">
@@ -42,7 +71,10 @@
         <div class="card text-center bg-success text-white mb-3">
           <div class="card-body">
             <h4>Tagged</h4>
-            <h5 class="display-5"><i class="fa fa-tags"></i> {{ tests.length - noTestLinkTests.length }}</h5>
+            <h5 class="display-5">
+              <i class="fa fa-tags"></i>
+              {{ tests.length - noTestLinkTests.length }}
+            </h5>
             <a routerLink="/tags" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
@@ -50,7 +82,9 @@
         <div class="card text-center bg-danger text-white mb-3">
           <div class="card-body">
             <h4>Broken</h4>
-            <h5 class="display-5"><i class="fa fa-chain-broken"></i> {{ brokenTests.length }}</h5>
+            <h5 class="display-5">
+              <i class="fa fa-chain-broken"></i> {{ brokenTests.length }}
+            </h5>
             <a routerLink="/tags" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>

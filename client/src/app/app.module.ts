@@ -5,6 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal/';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +41,8 @@ import { AddBreakageModalComponent } from './components/actions-list/actions/add
     FormsModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
-    ModalModule
+    ModalModule,
+    TabsModule
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]
