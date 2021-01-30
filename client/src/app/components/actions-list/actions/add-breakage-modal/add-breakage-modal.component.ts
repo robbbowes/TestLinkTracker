@@ -53,7 +53,7 @@ export class AddBreakageModalComponent implements OnInit {
   )
 
   onSubmit(form: NgForm) {
-    this.newBreakage.testId = +form.value.testSelect;
+    this.newBreakage.testId = +form.value.testSelect.id
     this.newBreakage.info = form.value.info;
     this.newBreakage.ticket = form.value.ticket;
     this.breakageService.addBreakage(this.newBreakage);

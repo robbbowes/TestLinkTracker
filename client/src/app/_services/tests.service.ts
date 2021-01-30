@@ -17,7 +17,7 @@ export class TestsService {
   constructor(private http: HttpClient) { }
 
   getTests() {
-    if (this.tests.length > 0) return of(this.tests)
+    // if (this.tests.length > 0) return of(this.tests)
     return this.http.get<GetTest[]>(this.baseUrl + 'tests').pipe(
       map(tests => {
         this.tests = tests;
@@ -27,8 +27,8 @@ export class TestsService {
   }
 
   getTest(id: number) {
-    const test = this.tests.find(t => t.id === id);
-    if (test !== undefined) return of(test);
+    // const test = this.tests.find(t => t.id === id);
+    // if (test !== undefined) return of(test);
     return this.http.get<GetTest>(this.baseUrl + 'tests/' + id);
   }
 

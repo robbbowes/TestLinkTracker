@@ -19,11 +19,7 @@ export class DashboardComponent implements OnInit {
   constructor(private testService: TestsService) { }
 
   ngOnInit(): void {
-    this.testService.getTests().subscribe(tests => {
-      this.tests = tests;
-      this.noTestLinkTests = this.tests.filter(test => test.testLinkTest === "")
-      this.brokenTests = this.tests.filter(test => test.breakage)
-    })
+    this.getTests();
   }
 
   @HostListener('window:resize')
@@ -34,6 +30,14 @@ export class DashboardComponent implements OnInit {
   nameLengthChanger = () => {
     let innerWidth = window.innerWidth;
     this.nameLength = innerWidth < 768 ? 40 : innerWidth < 1201 ? 60 : 85;
+  }
+
+  getTests() {
+    this.testService.getTests().subscribe(tests => {
+      this.tests = tests;
+      this.noTestLinkTests = this.tests.filter(test => test.testLinkTest === "")
+      this.brokenTests = this.tests.filter(test => test.breakage)
+    })
   }
 
 }
