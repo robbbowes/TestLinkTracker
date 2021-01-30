@@ -1,57 +1,70 @@
 <app-actions-list></app-actions-list>
 
-<section *ngIf="tests" id="current">
+<section *ngIf="tests" id="dashboard-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-9">
-        <tabset>
-            <tab heading="Broken" class="broken-tab">
-              <div class="card">
-                <table class="table table-striped">
-                  <thead class="thead">
-                    <tr>
-                      <th>Name</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let test of brokenTests">
-                      <td>{{ test.name | nameShorten: nameLength }}</td>
-                      <td>
-                        <a href="/" class="btn btn-secondary">
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </tab>
-
-            <tab heading="Missing TestLInk">
-              <div class="card">
-                <table class="table table-striped">
-                  <thead class="thead">
-                    <tr>
-                      <th>Name</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let test of noTestLinkTests">
-                      <td>{{ test.name | nameShorten: nameLength }}</td>
-                      <td>
-                        <a href="/" class="btn btn-secondary">
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </tab>
-        </tabset>
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+          <li [ngbNavItem]="1">
+            <a ngbNavLink (click)="nameLengthChanger()">Broken Tests</a>
+            <ng-template ngbNavContent>
+              <table class="table table-striped border">
+                <thead class="thead">
+                  <tr>
+                    <th>Name</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let test of brokenTests">
+                    <td>{{ test.name | nameShorten: nameLength }}</td>
+                    <td>
+                      <a href="/" class="btn btn-secondary">
+                        <i class="fa fa-angle-double-right"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <a ngbNavLink (click)="nameLengthChanger()">No TestLink Tag</a>
+            <ng-template ngbNavContent>
+              <table class="table table-striped border">
+                <thead class="thead">
+                  <tr>
+                    <th>Name</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let test of noTestLinkTests">
+                    <td>{{ test.name | nameShorten: nameLength }}</td>
+                    <td>
+                      <a href="/" class="btn btn-secondary">
+                        <i class="fa fa-angle-double-right"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </li>
+          <form *ngIf="active === 1" class="form-inline ml-auto">
+            <div class="form-group-row form-inline ml-auto">
+              <input placeholder="Search" class="form-control ml-2" type="text" [formControl]="filter" />
+            </div>
+          </form>
+          <form *ngIf="active === 2" class="form-inline ml-auto">
+            <div class="form-group-row form-inline ml-auto">
+              <input placeholder="Search" class="form-control ml-2" type="text" [formControl]="filter" />
+            </div>
+          </form>
+        </ul>
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
       </div>
+
       <div class="col-lg-3">
         <div class="card text-center bg-primary text-white mb-3">
           <div class="card-body">

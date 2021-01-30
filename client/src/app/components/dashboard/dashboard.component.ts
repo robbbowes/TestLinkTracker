@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { GetTest } from 'src/app/_models/GetTest';
 import { TestsService } from 'src/app/_services/tests.service';
 
@@ -12,6 +13,8 @@ export class DashboardComponent implements OnInit {
   noTestLinkTests: GetTest[];
   brokenTests: GetTest[];
   nameLength: number;
+  active = 1;
+  filter = new FormControl('');
 
   constructor(private testService: TestsService) { }
 
@@ -25,6 +28,10 @@ export class DashboardComponent implements OnInit {
 
   @HostListener('window:resize')
   onResize() {
+    this.nameLengthChanger()
+  }
+
+  nameLengthChanger = () => {
     let innerWidth = window.innerWidth;
     this.nameLength = innerWidth < 768 ? 40 : innerWidth < 1201 ? 60 : 85;
   }

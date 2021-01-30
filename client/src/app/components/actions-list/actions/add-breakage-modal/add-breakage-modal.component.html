@@ -15,33 +15,8 @@
     </button>
   </div>
   <div class="modal-body">
-    <!-- <div class="form-group row">
-      <label for="Filter" class="col-sm-2 col-form-label">Search</label>
-      <div class="col-sm-10">
-        <input
-          class="search form-control"
-          type="text"
-          [(ngModel)]="searchFilter"
-          (ngModelChange)="filter()"
-        />
-      </div>
-    </div> -->
     <form #addbreakageForm="ngForm" (ngSubmit)="onSubmit(addbreakageForm)">
       <div class="form-group row">
-        <!-- <label for="testSelect" class="col-sm-2 col-form-label">Test:</label>
-        <div class="col-sm-10">
-          <select
-            name="testSelect"
-            required
-            id="testSelect"
-            class="form-control"
-            ngModel
-          >
-            <option *ngFor="let test of filteredTests" value="{{ test.id }}">
-              {{ test.name }}
-            </option>
-          </select>
-        </div> -->
         <label
           for="typeahead-prevent-manual-entry"
           class="col-sm-2 col-form-label"
