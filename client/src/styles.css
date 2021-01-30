@@ -9,6 +9,24 @@
 
 @media only screen and (max-width: 575px) {
   body {
+    padding-top: 48px;
+  }
+}
+
+@media only screen and (min-width:576px) {
+  body {
+    padding-top: 96px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    padding-top: 48px;
+  }
+}
+
+/* @media only screen and (max-width: 575px) {
+  body {
     padding-top: 120px;
   }
 }
@@ -23,4 +41,4 @@
   body {
     padding-top: 120px;
   }
-}
+} */

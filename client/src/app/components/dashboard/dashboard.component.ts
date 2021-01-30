@@ -9,8 +9,8 @@ import { TestsService } from 'src/app/_services/tests.service';
 })
 export class DashboardComponent implements OnInit {
   tests: GetTest[] = [];
-  noTestLinkTests: GetTest[] = [];
-  brokenTests: GetTest[] = [];
+  noTestLinkTests: GetTest[];
+  brokenTests: GetTest[];
   nameLength: number;
 
   constructor(private testService: TestsService) { }
@@ -18,10 +18,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.testService.getTests().subscribe(tests => {
       this.tests = tests;
-      this.tests.forEach(test => {
-        if (test.testLinkTest !== "") this.noTestLinkTests.push(test)
-        if (test.breakage) this.brokenTests.push(test)
-      })
+      this.noTestLinkTests = this.tests.filter(test => test.testLinkTest === "")
+      this.brokenTests = this.tests.filter(test => test.breakage)
     })
   }
 

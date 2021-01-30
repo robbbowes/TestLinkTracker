@@ -31,19 +31,17 @@ export class AddBreakageModalComponent implements OnInit {
   }
 
   filter(): void {
-    this.filteredTests = this.tests.filter(test => {
-      console.log(test)
-      return test.name.toLowerCase().indexOf(this.searchFilter.toLowerCase()) !== -1
-    })
-    console.log(this.filteredTests)
+    this.filteredTests = this.tests.filter(
+      test => test.name.toLowerCase().indexOf(this.searchFilter.toLowerCase()) !== -1
+    )
   }
 
   openModal(template: TemplateRef<any>) {
     this.searchFilter = "";
     this.modalRef = this.modalService.show(template, this.config);
     this.testService.getTests().subscribe(tests => {
-      this.tests = tests;
-      this.filteredTests = tests;
+      this.tests = tests.filter(test => !test.breakage)
+      this.filteredTests = this.tests;
     })
   }
 
@@ -53,7 +51,6 @@ export class AddBreakageModalComponent implements OnInit {
     this.newBreakage.ticket = form.value.ticket;
     this.breakageService.addBreakage(this.newBreakage);
     this.modalRef.hide();
-    this.router.navigate(['']);
   }
 
   ngOnInit(): void {

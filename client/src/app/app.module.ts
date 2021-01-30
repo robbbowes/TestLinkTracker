@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NameShortenPipe } from './_pipes/name-shorten.pipe';
 import { TestDetailComponent } from './components/tests/test-detail/test-detail.component';
 import { AddBreakageModalComponent } from './components/actions-list/actions/add-breakage-modal/add-breakage-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AddBreakageModalComponent } from './components/actions-list/actions/add
     HttpClientModule,
     BsDropdownModule.forRoot(),
     ModalModule,
-    TabsModule
+    TabsModule,
+    NgbModule
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]

@@ -5,9 +5,7 @@
     <div class="row">
       <div class="col-lg-9">
         <tabset>
-          <div class="test-tabset">
-
-            <tab heading="Broken" class="bg-danger">
+            <tab heading="Broken" class="broken-tab">
               <div class="card">
                 <table class="table table-striped">
                   <thead class="thead">
@@ -17,7 +15,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let test of tests">
+                    <tr *ngFor="let test of brokenTests">
                       <td>{{ test.name | nameShorten: nameLength }}</td>
                       <td>
                         <a href="/" class="btn btn-secondary">
@@ -40,7 +38,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let test of tests">
+                    <tr *ngFor="let test of noTestLinkTests">
                       <td>{{ test.name | nameShorten: nameLength }}</td>
                       <td>
                         <a href="/" class="btn btn-secondary">
@@ -52,9 +50,6 @@
                 </table>
               </div>
             </tab>
-
-
-          </div>
         </tabset>
       </div>
       <div class="col-lg-3">
