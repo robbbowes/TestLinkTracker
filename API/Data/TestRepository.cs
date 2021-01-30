@@ -25,7 +25,10 @@ namespace API.Data
             await _context.AddAsync(test);
             await _context.SaveChangesAsync();
 
-            List<Test> tests = await _context.Tests.ToListAsync();
+            List<Test> tests = await _context.Tests
+                .Include(t => t.Breakage)
+                .Include(t => t.Tags)
+                .ToListAsync();
             return tests.Select(t => _mapper.Map<GetTestDto>(t)).ToList();
         }
 

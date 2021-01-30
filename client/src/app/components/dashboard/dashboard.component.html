@@ -16,7 +16,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let test of brokenTests">
+                  <tr *ngFor="let test of broken$ | async">
                     <td>{{ test.name | nameShorten: nameLength }}</td>
                     <td>
                       <a href="/" class="btn btn-secondary">
@@ -39,7 +39,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let test of noTestLinkTests">
+                  <tr *ngFor="let test of noTestLink$ | async">
                     <td>{{ test.name | nameShorten: nameLength }}</td>
                     <td>
                       <a href="/" class="btn btn-secondary">
@@ -51,12 +51,16 @@
               </table>
             </ng-template>
           </li>
-          <form *ngIf="active === 1" class="form-inline ml-auto">
+          <form class="form-inline ml-auto">
             <div class="form-group-row form-inline ml-auto">
-              <input placeholder="Search" class="form-control ml-2" type="text" [formControl]="filter" />
+              <input
+                placeholder="Search"
+                class="form-control ml-2"
+                type="text"
+                [formControl]="filter"
+              />
             </div>
           </form>
-          <h1>{{ activated ? "Hi" : "Not active" }}</h1>
           <!-- <form *ngIf="active === 2" class="form-inline ml-auto">
             <div class="form-group-row form-inline ml-auto">
               <input placeholder="Search" class="form-control ml-2" type="text" [formControl]="filter" />
@@ -82,7 +86,9 @@
             <h4>Tagged</h4>
             <h5 class="display-5">
               <i class="fa fa-tags"></i>
-              <span *ngIf="tests && noTestLinkTests"> {{ tests.length - noTestLinkTests.length }}</span>
+              <span *ngIf="tests && noTestLinkTests">
+                {{ tests.length - noTestLinkTests.length }}</span
+              >
             </h5>
             <a routerLink="/tags" class="btn btn-outline-light btn-sm">View</a>
           </div>

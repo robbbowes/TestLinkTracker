@@ -12,25 +12,37 @@ import { TestsService } from 'src/app/_services/tests.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  tests: GetTest[] = [];
-  // brokenTests$: Observable<GetTest[]>
-  noTestLinkTests: GetTest[];
+  private testSub: Subscription;
+  private brokenSub: Subscription;
+  private noTestLinkSub: Subscription;
+  tests: GetTest[];
   brokenTests: GetTest[];
-  activated = false;
-  private activatedSub: Subscription;
-
+  noTestLinkTests: GetTest[];
+  broken$: Observable<GetTest[]>
+  noTestLink$: Observable<GetTest[]>
   nameLength: number;
   active = 1;
   filter = new FormControl('');
 
   constructor(private testService: TestsService) { }
+
   ngOnDestroy(): void {
-    this.activatedSub.unsubscribe();
+    this.testSub.unsubscribe();
+    this.noTestLinkSub.unsubscribe();
+    this.brokenSub.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.getTests();
-    this.activatedSub = this.testService.obs.subscribe(didActivate => this.activated = didActivate
+    this.testService.getTests()
+    this.testSub = this.testService.allTests$.subscribe(tests => this.tests = tests)
+    this.brokenSub = this.testService.brokenTests$.subscribe(tests => this.brokenTests = tests)
+    this.noTestLinkSub = this.testService.noTestLinkTests$.subscribe(tests => this.noTestLinkTests = tests)
+
+    this.broken$ = this.filter.valueChanges.pipe(
+      startWith(''), map(text => this.searchBroken(text))
+    );
+    this.noTestLink$ = this.filter.valueChanges.pipe(
+      startWith(''), map(text => this.searchNoTestLink(text))
     )
   }
 
@@ -44,20 +56,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.nameLength = innerWidth < 768 ? 40 : innerWidth < 1201 ? 60 : 85;
   }
 
-  getTests() {
-    this.testService.getTests().subscribe(tests => {
-      this.tests = tests;
-      this.noTestLinkTests = this.tests.filter(test => test.testLinkTest === "")
-      this.brokenTests = this.tests.filter(test => test.breakage)
-    })
+  searchBroken(text: string): GetTest[] {
+    return this.brokenTests.filter(test => test.name.toLowerCase().includes(text.toLowerCase()));
   }
 
-  searchBroken(text: string): GetTest[] {
-    return this.brokenTests.filter(test => {
-      const term = text.toLowerCase();
-      console.log(term)
-      return test.name.toLowerCase().includes(term);
-    });
+  searchNoTestLink(text: string): GetTest[] {
+    return this.noTestLinkTests.filter(test => test.name.toLowerCase().includes(text.toLowerCase()));
   }
 
 }

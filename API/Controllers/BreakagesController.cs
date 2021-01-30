@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
@@ -24,9 +25,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<GetTestDto>> AddBreakages(AddBreakageDto addBreakageDto)
+        public async Task<ActionResult<IEnumerable<GetTestDto>>> AddBreakages(AddBreakageDto addBreakageDto)
         {
-            return await _breakageRepo.AddBreakageAsync(addBreakageDto);
+            return Ok(await _breakageRepo.AddBreakageAsync(addBreakageDto));
         }
 
         [HttpPut]

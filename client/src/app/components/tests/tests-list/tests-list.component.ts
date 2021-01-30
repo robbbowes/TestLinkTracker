@@ -17,10 +17,10 @@ export class TestsListComponent implements OnInit {
   constructor(private testService: TestsService) { }
 
   ngOnInit(): void {
-    this.testService.getTests().subscribe(tests => {
-      this.tests = tests;
-      // this.tests.sort((a,b) => a.name.localeCompare(b.name));
-    });
+    // this.testService.getTests().subscribe(tests => {
+    //   this.tests = tests;
+    //   // this.tests.sort((a,b) => a.name.localeCompare(b.name));
+    // });
   }
 
   toggleBroken() {

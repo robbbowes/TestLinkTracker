@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
@@ -31,9 +32,9 @@ namespace API.Data
             }
             return breakageDto;
         }
-        public async Task<GetTestDto> AddBreakageAsync(AddBreakageDto addBreakageDto)
+        public async Task<IEnumerable<GetTestDto>> AddBreakageAsync(AddBreakageDto addBreakageDto)
         {
-            GetTestDto testDto = null;
+            // GetTestDto testDto = null;
             Test test = await _context.Tests
                 .Where(t => t.Id == addBreakageDto.TestId)
                 .Include(t => t.Tags)
@@ -45,9 +46,13 @@ namespace API.Data
                 Breakage breakage = _mapper.Map<Breakage>(addBreakageDto);
                 await _context.Breakages.AddAsync(breakage);
                 await _context.SaveChangesAsync();
-                testDto = _mapper.Map<GetTestDto>(test);
+                // testDto = _mapper.Map<GetTestDto>(test);
             }
-            return testDto;
+            List<Test> tests = await _context.Tests
+                .Include(t => t.Tags)
+                .Include(t => t.Breakage)
+                .ToListAsync();
+            return tests.Select(t => _mapper.Map<GetTestDto>(t)).ToList();
         }
 
         public void Update(Breakage breakage)

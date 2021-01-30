@@ -32,11 +32,7 @@ export class AddTestModalComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.newTest.name = form.value.name;
     this.newTest.testLinkTest = form.value.testLink;
-    this.testService.addTest(this.newTest).subscribe(response => {
-      console.log(response)
-    }, error => {
-      console.log(error)
-    });
+    this.testService.addTest(this.newTest);
     this.modalRef.hide();
   }
 

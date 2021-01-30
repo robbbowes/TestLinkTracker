@@ -1,13 +1,13 @@
-import { Component, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { AddBreakage } from 'src/app/_models/AddBreakage';
 import { AddTest } from 'src/app/_models/AddTest';
 import { GetTest } from 'src/app/_models/GetTest';
-import { BreakagesService } from 'src/app/_services/breakages.service';
+// import { BreakagesService } from 'src/app/_services/breakages.service';
 import { TestsService } from 'src/app/_services/tests.service';
 
 @Component({
@@ -15,9 +15,9 @@ import { TestsService } from 'src/app/_services/tests.service';
   templateUrl: './add-breakage-modal.component.html',
   styleUrls: ['./add-breakage-modal.component.css']
 })
-export class AddBreakageModalComponent implements OnInit {
+export class AddBreakageModalComponent implements OnInit, OnDestroy {
   modalRef: BsModalRef;
-  tests: GetTest[] = [];
+  tests: GetTest[];
   model: GetTest;
   newBreakage: AddBreakage = { 
     info: "", ticket: "", testId: null 
@@ -25,10 +25,10 @@ export class AddBreakageModalComponent implements OnInit {
   config = { 
     class: "modal-lg", ignoreBackdropClick: true
   }
+  private testSub: Subscription;
 
   constructor(
     private modalService: BsModalService,
-    private breakageService: BreakagesService,
     private testService: TestsService) {
     modalService.config.class
   }
@@ -36,11 +36,15 @@ export class AddBreakageModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.testSub.unsubscribe();
+  }
+
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
-    this.testService.getTests().subscribe(tests => {
-      this.tests = tests.filter(test => !test.breakage)
-    })
+    this.testService.getTests()
+    this.testSub = this.testService.allTests$.subscribe(tests => this.tests = tests)
   }
 
   formatter = (test: GetTest) => test.name;
@@ -56,13 +60,8 @@ export class AddBreakageModalComponent implements OnInit {
     this.newBreakage.testId = +form.value.testSelect.id
     this.newBreakage.info = form.value.info;
     this.newBreakage.ticket = form.value.ticket;
-    this.breakageService.addBreakage(this.newBreakage);
-    this.nextMe();
+    this.testService.addBreakage(this.newBreakage);
     this.modalRef.hide();
-  }
-
-  nextMe() {
-    this.testService.obs.next(true);
   }
 
 }
