@@ -56,11 +56,12 @@
               <input placeholder="Search" class="form-control ml-2" type="text" [formControl]="filter" />
             </div>
           </form>
-          <form *ngIf="active === 2" class="form-inline ml-auto">
+          <h1>{{ activated ? "Hi" : "Not active" }}</h1>
+          <!-- <form *ngIf="active === 2" class="form-inline ml-auto">
             <div class="form-group-row form-inline ml-auto">
               <input placeholder="Search" class="form-control ml-2" type="text" [formControl]="filter" />
             </div>
-          </form>
+          </form> -->
         </ul>
         <div [ngbNavOutlet]="nav" class="mt-2"></div>
       </div>
@@ -70,7 +71,7 @@
           <div class="card-body">
             <h4>Tests</h4>
             <h5 class="display-5">
-              <i class="fa fa-cog"></i> {{ tests.length }}
+              <i class="fa fa-cog"></i> {{ tests.length || 0 }}
             </h5>
             <a routerLink="/tests" class="btn btn-outline-light btn-sm">View</a>
           </div>
@@ -81,7 +82,7 @@
             <h4>Tagged</h4>
             <h5 class="display-5">
               <i class="fa fa-tags"></i>
-              {{ tests.length - noTestLinkTests.length }}
+              <span *ngIf="tests && noTestLinkTests"> {{ tests.length - noTestLinkTests.length }}</span>
             </h5>
             <a routerLink="/tags" class="btn btn-outline-light btn-sm">View</a>
           </div>
@@ -91,7 +92,8 @@
           <div class="card-body">
             <h4>Broken</h4>
             <h5 class="display-5">
-              <i class="fa fa-chain-broken"></i> {{ brokenTests.length }}
+              <i class="fa fa-chain-broken"></i>
+              <span *ngIf="brokenTests"> {{ brokenTests.length }}</span>
             </h5>
             <a routerLink="/tags" class="btn btn-outline-light btn-sm">View</a>
           </div>

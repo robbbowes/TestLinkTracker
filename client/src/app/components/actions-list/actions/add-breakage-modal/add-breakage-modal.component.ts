@@ -57,7 +57,12 @@ export class AddBreakageModalComponent implements OnInit {
     this.newBreakage.info = form.value.info;
     this.newBreakage.ticket = form.value.ticket;
     this.breakageService.addBreakage(this.newBreakage);
+    this.nextMe();
     this.modalRef.hide();
+  }
+
+  nextMe() {
+    this.testService.obs.next(true);
   }
 
 }

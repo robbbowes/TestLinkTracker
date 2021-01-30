@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GetTest } from '../_models/GetTest';
 
@@ -13,6 +13,7 @@ import { AddTest } from '../_models/AddTest';
 export class TestsService {
   baseUrl = environment.apiUrl;
   tests: GetTest[] = [];
+  obs = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
 
