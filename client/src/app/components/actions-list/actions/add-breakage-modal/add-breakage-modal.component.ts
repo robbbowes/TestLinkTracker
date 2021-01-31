@@ -40,7 +40,6 @@ export class AddBreakageModalComponent implements OnInit, OnDestroy {
     this.testSub.unsubscribe();
   }
 
-
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
     this.testService.getTests()

@@ -9,5 +9,7 @@ namespace API.DTOs
         public List<GetTagDto> Tags { get; set; }
         public string TestLinkTest { get; set; }
         public GetBreakageDto Breakage { get; set; }
+        public string LastChecked { get; set; }
+        public string Observations { get; set; }
     }
 }

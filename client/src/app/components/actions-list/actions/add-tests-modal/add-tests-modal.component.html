@@ -1,4 +1,4 @@
-<a href="#" class="btn btn-success btn-block" (click)="openModal(addTests)">
+<a class="btn btn-success btn-block text-white" (click)="openModal(addTests)">
   <i class="fa fa-plus"></i> Add Tests
 </a>
 
@@ -19,8 +19,8 @@
       <div class="form-group">
         <label for="upload" class="form-label">Json Upload</label>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="json">
-            <label for="json" class="custom-file-label">Choose File</label>
+          <input type="file" class="custom-file-input" id="json" />
+          <label for="json" class="custom-file-label">Choose File</label>
         </div>
         <small class="form-text text-muted mt-2">File type: Json</small>
       </div>
@@ -28,5 +28,5 @@
   </div>
   <div class="modal-footer">
     <button class="btn btn-success" (click)="submit()">Add Tests</button>
-</div>
+  </div>
 </ng-template>

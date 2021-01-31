@@ -11,7 +11,7 @@ import { TestsService } from 'src/app/_services/tests.service';
 })
 export class TestDetailComponent implements OnInit {
   test: GetTest;
-  // testId: number;
+  isCollapsed = false;
 
   constructor(private route: ActivatedRoute, private testService: TestsService) { }
 
@@ -21,6 +21,10 @@ export class TestDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.testService.getTest(+params['id']).subscribe(test => this.test = test)
     });
+  }
+
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
   }
 
 }

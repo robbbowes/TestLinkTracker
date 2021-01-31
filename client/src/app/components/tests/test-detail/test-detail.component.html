@@ -1,19 +1,60 @@
 <section *ngIf="test" id="test-section">
-  <div class="container">
-    <div class="col-lg-9">
-      <div class="card">
-        <div class="card-header">
-          {{ test.name }}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="card">
+    <div class="card-header">
+      <span>
+        <button
+          type="button"
+          class="btn"
+          [ngClass]="{
+            'text-success bg-white border-success': isCollapsed,
+            'btn-success': !isCollapsed
+          }"
+          (click)="collapse.toggle()"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+        >
+          <i class="fa fa-tags"></i>
+        </button>
+      </span>
+      <span class="ml-2">{{ test.name }}</span>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <h5 class="card-title col-lg-9">
+          Priority: *Expand API to include this*
+        </h5>
+        <p class="col-lg-3">Last checked: 25 Dec 2020</p>
+      </div>
+
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div
+          *ngFor="let tag of test.tags; let i = index"
+          class="card-text py-2"
+        >
+          <i class="fa fa-tags text-success"></i>
+          <span *ngIf="test.tags[i].role" class="ml-2">{{
+            test.tags[i].role
+          }}</span>
+          <span *ngIf="test.tags[i].area"> - {{ test.tags[i].area }}</span>
+          <span *ngIf="test.tags[i].scope"> - {{ test.tags[i].scope }}</span>
+          <span *ngIf="test.tags[i].topic"> - {{ test.tags[i].topic }}</span>
+          <span *ngIf="test.tags[i].object"> - {{ test.tags[i].object }}</span>
         </div>
       </div>
+      <div *ngIf="test.breakage" class="card-text">
+        <i class="fa fa-chain-broken text-danger"></i>
+        <span class="ml-2 h5">Breakage info:</span>
+        <ul>
+          <li>{{ test.breakage.date | date}}</li>
+          <li>{{ test.breakage.info }}</li>
+          <li>{{ test.breakage.ticket }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a class="btn btn-primary text-white">Edit Test</a>
+      <a class="btn btn-success text-white mx-3">Edit Tags</a>
+      <a *ngIf="test.breakage" class="btn btn-danger text-white">Edit Breakage</a>
     </div>
   </div>
 </section>

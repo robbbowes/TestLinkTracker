@@ -1,5 +1,14 @@
 <app-navbar></app-navbar>
 <app-actions-list></app-actions-list>
 <section id="wrapper">
-    <router-outlet></router-outlet>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10">
+        <router-outlet> </router-outlet>
+      </div>
+      <div class="col-lg-2">
+        <app-sidebar-list></app-sidebar-list>
+      </div>
+    </div>
+  </div>
 </section>

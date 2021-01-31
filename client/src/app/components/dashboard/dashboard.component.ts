@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -14,11 +14,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private testSub: Subscription;
   private brokenSub: Subscription;
   private noTestLinkSub: Subscription;
-  tests: GetTest[] = [];
-  brokenTests: GetTest[] = [];
-  noTestLinkTests: GetTest[] = [];
-  filteredBroken: GetTest[] = [];
-  filteredNoTestLink: GetTest[] = [];
+  // @Input() tests: GetTest[]
+  // @Input() brokenTests: GetTest[]
+  // @Input() noTestLinkTests: GetTest[]
+  tests: GetTest[];
+  brokenTests: GetTest[];
+  noTestLinkTests: GetTest[];
+  // filteredBroken: GetTest[] = [];
+  // filteredNoTestLink: GetTest[] = [];
   nameLength: number;
   active = 1;
   filter = new FormControl('');
@@ -35,19 +38,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.testService.getTests()
     this.testSub = this.testService.allTests$.subscribe(tests => this.tests = tests)
-    this.brokenSub = this.testService.brokenTests$.subscribe(tests => {
-      this.brokenTests = tests
-      this.filteredBroken = tests;
-    })
-    this.noTestLinkSub = this.testService.noTestLinkTests$.subscribe(tests => {
-      this.noTestLinkTests = tests
-      this.filteredNoTestLink = tests;
-    })
+    this.brokenSub = this.testService.brokenTests$.subscribe(tests => this.brokenTests = tests)
+    this.noTestLinkSub = this.testService.noTestLinkTests$.subscribe(tests => this.noTestLinkTests = tests)
   }
 
   switchTab() {
-    this.filteredBroken = this.brokenTests;
-    this.filteredNoTestLink = this.noTestLinkTests;
+    // this.filteredBroken = this.brokenTests;
+    // this.filteredNoTestLink = this.noTestLinkTests;
     this.nameLengthChanger()
   }
 
@@ -61,15 +58,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.nameLength = innerWidth < 768 ? 40 : innerWidth < 1201 ? 60 : 85;
   }
 
-  filterBrokenTests(event: Event) {
-    let term = (<HTMLInputElement>event.target).value;
-    this.filteredBroken = this.brokenTests.filter(test => test.name.toLowerCase().includes(term.toLowerCase()))
-  }
+  // filterBrokenTests(event: Event) {
+  //   let term = (<HTMLInputElement>event.target).value;
+  //   this.filteredBroken = this.brokenTests.filter(test => test.name.toLowerCase().includes(term.toLowerCase()))
+  // }
 
-  filterNoTestLinkTests(event: Event) {
-    let term = (<HTMLInputElement>event.target).value;
-    this.filteredNoTestLink = this.noTestLinkTests.filter(test => test.name.toLowerCase().includes(term.toLowerCase()))
-  }
+  // filterNoTestLinkTests(event: Event) {
+  //   let term = (<HTMLInputElement>event.target).value;
+  //   this.filteredNoTestLink = this.noTestLinkTests.filter(test => test.name.toLowerCase().includes(term.toLowerCase()))
+  // }
 
   // searchBroken(text: string): GetTest[] {
   //   return this.brokenTests.filter(test => test.name.toLowerCase().includes(text.toLowerCase()));
