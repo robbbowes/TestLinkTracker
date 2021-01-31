@@ -9,6 +9,7 @@ import { GetTest } from 'src/app/_models/GetTest';
 export class TestsTableComponent implements OnInit {
   @Input() tests: GetTest[];
   @Input() testNameLength: number;
+  @Input() icon: string;
 
   constructor() { }
 

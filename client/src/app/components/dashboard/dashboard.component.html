@@ -1,12 +1,13 @@
 <section *ngIf="tests" id="dashboard-section">
   <div class="container">
     <div class="row">
-      <div class="col-lg-9">
+      <div class="col-lg-10">
         <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
           <li [ngbNavItem]="1">
             <a ngbNavLink (click)="switchTab()">All tests</a>
             <ng-template ngbNavContent>
               <app-tests-table
+                icon="fa-cog"
                 [tests]="tests"
                 [testNameLength]="nameLength"
               ></app-tests-table>
@@ -16,6 +17,7 @@
             <a ngbNavLink (click)="switchTab()">Broken Tests</a>
             <ng-template ngbNavContent>
               <app-tests-table
+                icon="fa-chain-broken"
                 [tests]="filteredBroken"
                 [testNameLength]="nameLength"
               ></app-tests-table>
@@ -25,6 +27,7 @@
             <a ngbNavLink (click)="switchTab()">No TestLink Tag</a>
             <ng-template ngbNavContent>
               <app-tests-table
+                icon="fa-tags"
                 [tests]="filteredNoTestLink"
                 [testNameLength]="nameLength"
               ></app-tests-table>
@@ -34,7 +37,7 @@
         <div [ngbNavOutlet]="nav" class="mt-2"></div>
       </div>
 
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <app-sidebar-list
           [allTests]="tests"
           [brokenTests]="brokenTests"
