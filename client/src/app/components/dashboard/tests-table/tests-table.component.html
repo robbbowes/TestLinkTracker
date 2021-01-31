@@ -1,0 +1,18 @@
+<table class="table table-striped border">
+  <thead class="thead">
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let test of tests">
+      <td>{{ test.name | nameShorten: testNameLength }}</td>
+      <td>
+        <a routerLink="/tests/{{ test.id }}" class="btn btn-secondary">
+          <i class="fa fa-angle-double-right"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

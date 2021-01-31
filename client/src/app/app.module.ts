@@ -20,6 +20,8 @@ import { NameShortenPipe } from './_pipes/name-shorten.pipe';
 import { TestDetailComponent } from './components/tests/test-detail/test-detail.component';
 import { AddBreakageModalComponent } from './components/actions-list/actions/add-breakage-modal/add-breakage-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarListComponent } from './components/dashboard/sidebar-list/sidebar-list.component';
+import { TestsTableComponent } from './components/dashboard/tests-table/tests-table.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DashboardComponent,
     NameShortenPipe,
     TestDetailComponent,
-    AddBreakageModalComponent
+    AddBreakageModalComponent,
+    SidebarListComponent,
+    TestsTableComponent
   ],
   imports: [
     BrowserModule,
